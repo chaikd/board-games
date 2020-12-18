@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.board-box{
+    margin: 0 auto;
+}
+.piect-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
