@@ -3,9 +3,10 @@ export class Board {
     startY;
     boardWidth;
     limitWidth;
+    dom;
     constructor(
-        dom,
-        gap
+        dom: any,
+        gap: any
     ) {
         gap = gap || 0;
         this.dom = dom;

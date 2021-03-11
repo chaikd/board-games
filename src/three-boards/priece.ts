@@ -1,54 +1,11 @@
 export class Priect {
-    context;
+    context: any;
     boardWidth;
     startX;
     startY;
-    siteArray = [
-        {
-            coordinate: [this.startX, this.startY],
-            hasPriece: 1,
-            player: 'B'
-        },
-        {
-            coordinate: [this.startX + 100, this.startY],
-            hasPriece: 1,
-            player: 'B'
-        },
-        {
-            coordinate: [this.startX + 200, this.startY],
-            hasPriece: 1,
-            player: 'B'
-        },
-        {
-            coordinate: [this.startX, this.startY + 100],
-            hasPriece: 0,
-        },
-        {
-            coordinate: [this.startX + 100, this.startY + 100],
-            hasPriece: 0,
-        },
-        {
-            coordinate: [this.startX + 200, this.startY + 100],
-            hasPriece: 0,
-        },
-        {
-            coordinate: [this.startX, this.startY + 200],
-            hasPriece: 1,
-            player: 'W'
-        },
-        {
-            coordinate: [this.startX + 100, this.startY + 200],
-            hasPriece: 1,
-            player: 'W'
-        },
-        {
-            coordinate: [this.startX + 200, this.startY + 200],
-            hasPriece: 1,
-            player: 'W'
-        },
-    ];
+    siteArray: any;
     currentPlayer = 'B';
-    selectionPriece;
+    selectionPriece: any;
     successComposition = [
         [0, 3, 6],
         [0, 4, 8],
@@ -56,15 +13,60 @@ export class Priect {
         [2, 4, 6],
         [2, 5, 8],
         [3, 4, 5]
-    ]
-    constructor(dom, gap) {
+    ];
+    dom;
+    constructor(dom: any, gap: any) {
         gap = gap || 0;
         this.dom = dom;
         this.startX = gap;
         this.startY = gap;
         this.boardWidth = this.dom.offsetWidth - gap * 2;
         this.prieceClickEvn();
-        this.siteArray = this.siteArray.map(v => {
+        this.siteArray = [
+            {
+                coordinate: [this.startX, this.startY],
+                hasPriece: 1,
+                player: 'B'
+            },
+            {
+                coordinate: [this.startX + 100, this.startY],
+                hasPriece: 1,
+                player: 'B'
+            },
+            {
+                coordinate: [this.startX + 200, this.startY],
+                hasPriece: 1,
+                player: 'B'
+            },
+            {
+                coordinate: [this.startX, this.startY + 100],
+                hasPriece: 0,
+            },
+            {
+                coordinate: [this.startX + 100, this.startY + 100],
+                hasPriece: 0,
+            },
+            {
+                coordinate: [this.startX + 200, this.startY + 100],
+                hasPriece: 0,
+            },
+            {
+                coordinate: [this.startX, this.startY + 200],
+                hasPriece: 1,
+                player: 'W'
+            },
+            {
+                coordinate: [this.startX + 100, this.startY + 200],
+                hasPriece: 1,
+                player: 'W'
+            },
+            {
+                coordinate: [this.startX + 200, this.startY + 200],
+                hasPriece: 1,
+                player: 'W'
+            },
+        ];
+        this.siteArray = this.siteArray.map((v: any) => {
             v.scope = [
                 [v.coordinate[0] - 15, v.coordinate[1] - 15],
                 [v.coordinate[0] + 15, v.coordinate[1] + 15]
@@ -82,7 +84,7 @@ export class Priect {
     }
 
     prieceClickEvn() {
-        this.dom.onclick = (e) => {
+        this.dom.onclick = (e: any) => {
             let target;
             if (this.selectionPriece) {
                 const canmove = this.canMove(this.selectionPriece);
@@ -108,7 +110,7 @@ export class Priect {
                 this.selectionPriece = undefined;
                 return;
             }
-            target = this.findTarget(this.siteArray.filter(v => {
+            target = this.findTarget(this.siteArray.filter((v: any) => {
                 return v.player == this.currentPlayer
             }), e)
             console.log(target)
@@ -120,8 +122,8 @@ export class Priect {
         }
     }
 
-    findTarget(locations, e) {
-        return locations.find(v => {
+    findTarget(locations: any, e: any) {
+        return locations.find((v: any) => {
             return e.offsetX >= v.scope[0][0]
                 && e.offsetX <= v.scope[1][0]
                 && e.offsetY >= v.scope[0][1]
@@ -129,7 +131,7 @@ export class Priect {
         })
     }
 
-    clearPriect(target) {
+    clearPriect(target: any) {
         const ctx = this.context;
         ctx.clearRect(
             target.coordinate[0] - 20,
@@ -211,8 +213,8 @@ export class Priect {
     }
 
     checkSuccess() {
-        const warr = [];
-        const barr = [];
+        const warr: Array<any> = [];
+        const barr: Array<any> = [];
         this.siteArray.forEach((v, k) => {
             if (v.player == 'B') {
                 barr.push(k)

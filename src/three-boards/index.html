@@ -3,17 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="/assets/css/index.css"> -->
-    <script>
-        // document.onreadystatechange = function (e) {
-        //     console.log(e)
-        //     if (document.readyState === "complete") {
-        //         console.log(document.readyState);
-        //         document.getElementById("PreLoaderBar").style.display = "none";
-        //     }
-        // }
-    </script>
+    <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 <body>
     <div class="box">
@@ -24,6 +14,5 @@
             <canvas id="chessPiece" width="500" height="500"></canvas>
         </div>
     </div>
-    <!-- <script type="module" src="/assets/js/index.js"></script> -->
 </body>
 </html>
