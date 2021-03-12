@@ -13,7 +13,7 @@ let getentries= function () {
   var map = {};
   for (var i = 0; i < entryFiles.length; i++) {
       let filePath = entryFiles[i];
-      if(filePath == './src/index.js') {
+      if(/^.\/src\/index.[j|t]s$/.exec(filePath)) {
           map['index'] = filePath;
           chunks.push('index');
       }else {
@@ -68,22 +68,16 @@ module.exports = {
     },
     module: {
         rules: [
-            // {
-            //     test: /\.js$/,
-            //     use:{
-            //         loader: 'babel-loader',
-            //         options: {
-            //             presets: ['@babel/preset-env'],
-            //             plugins: [
-            //                 require('@babel/plugin-proposal-class-properties')
-            //             ]
-            //         }
-            //     }
-            // },
             {
-                test: /\.ts$/,
-                loader: 'ts-loader'
-            }
+                test: /\.(ts|js)$/,
+                loader: 'babel-loader',
+                exclude: '/node_modules/'
+            },
+            // babel-loader中使用@babel/preset-typescript转译ts
+            // {
+            //     test: /\.ts$/,
+            //     loader: 'ts-loader'
+            // }
         ]
     },
     plugins: [
