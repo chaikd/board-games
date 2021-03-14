@@ -73,6 +73,10 @@ module.exports = {
                 loader: 'babel-loader',
                 exclude: '/node_modules/'
             },
+            {
+                test: /\.s?css/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
+            }
             // babel-loader中使用@babel/preset-typescript转译ts
             // {
             //     test: /\.ts$/,

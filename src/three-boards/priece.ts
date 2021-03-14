@@ -15,12 +15,14 @@ export class Priect {
         [3, 4, 5]
     ];
     dom;
+    space;
     constructor(dom: any, gap: any) {
         gap = gap || 0;
         this.dom = dom;
         this.startX = gap;
         this.startY = gap;
         this.boardWidth = this.dom.offsetWidth - gap * 2;
+        let space = this.space = this.boardWidth/2;
         this.prieceClickEvn();
         this.siteArray = [
             {
@@ -29,39 +31,39 @@ export class Priect {
                 player: 'B'
             },
             {
-                coordinate: [this.startX + 100, this.startY],
+                coordinate: [this.startX + space, this.startY],
                 hasPriece: 1,
                 player: 'B'
             },
             {
-                coordinate: [this.startX + 200, this.startY],
+                coordinate: [this.startX + 2 * space, this.startY],
                 hasPriece: 1,
                 player: 'B'
             },
             {
-                coordinate: [this.startX, this.startY + 100],
+                coordinate: [this.startX, this.startY + space],
                 hasPriece: 0,
             },
             {
-                coordinate: [this.startX + 100, this.startY + 100],
+                coordinate: [this.startX + space, this.startY + space],
                 hasPriece: 0,
             },
             {
-                coordinate: [this.startX + 200, this.startY + 100],
+                coordinate: [this.startX + 2 * space, this.startY + space],
                 hasPriece: 0,
             },
             {
-                coordinate: [this.startX, this.startY + 200],
+                coordinate: [this.startX, this.startY + 2 * space],
                 hasPriece: 1,
                 player: 'W'
             },
             {
-                coordinate: [this.startX + 100, this.startY + 200],
+                coordinate: [this.startX + space, this.startY + 2 * space],
                 hasPriece: 1,
                 player: 'W'
             },
             {
-                coordinate: [this.startX + 200, this.startY + 200],
+                coordinate: [this.startX + 2 * space, this.startY + 2 * space],
                 hasPriece: 1,
                 player: 'W'
             },
@@ -77,6 +79,7 @@ export class Priect {
     init() {
         this.context = this.dom.getContext('2d');
         const ctx = this.context;
+        this.context.clearRect(0, 0, this.boardWidth,this.boardWidth);
         for (let i = 0; i < 3; i++) {
             this.drowPriect(this.startX + i * (this.boardWidth / 2), this.startY, "#000");
             this.drowPriect(this.startX + i * (this.boardWidth / 2), this.startY + this.boardWidth, "#fff");
@@ -103,7 +106,7 @@ export class Priect {
                     moveToTarget.coordinate[0],
                     moveToTarget.coordinate[1],
                     this.selectionPriece.player == 'B' ? '#000' : '#fff'
-                );
+                )
                 this.resetSiteArray(moveToTarget);
                 this.checkSuccess();
                 this.targetCurrentPlayer();
@@ -111,9 +114,8 @@ export class Priect {
                 return;
             }
             target = this.findTarget(this.siteArray.filter((v: any) => {
-                return v.player == this.currentPlayer
+                return v.player === this.currentPlayer
             }), e)
-            console.log(target)
             if (!target) {
                 return;
             }
@@ -179,13 +181,13 @@ export class Priect {
             const x = v.coordinate[0];
             const y = v.coordinate[1];
             return !v.hasPriece
-                && ((x == target.coordinate[0] + 100 && y == target.coordinate[1])
-                    || (x == target.coordinate[0] - 100 && y == target.coordinate[1])
-                    || (x == target.coordinate[0] && y == target.coordinate[1] + 100)
-                    || (x == target.coordinate[0] && y == target.coordinate[1] - 100)
-                    || (v.coordinate[0] == this.startX + 100 && v.coordinate[1] == this.startY + 100)
-                    || (target.coordinate[0] == this.startX + 100
-                        && target.coordinate[1] == this.startY + 100))
+                && ((x == target.coordinate[0] + this.space && y == target.coordinate[1])
+                || (x == target.coordinate[0] - this.space && y == target.coordinate[1])
+                || (x == target.coordinate[0] && y == target.coordinate[1] + this.space)
+                || (x == target.coordinate[0] && y == target.coordinate[1] - this.space)
+                || (v.coordinate[0] == this.startX + this.space && v.coordinate[1] == this.startY + this.space)
+                || (target.coordinate[0] == this.startX + this.space
+                && target.coordinate[1] == this.startY + this.space))
         })
     }
 
@@ -232,15 +234,20 @@ export class Priect {
             barr[0] == 6
             && barr[1] == 7
             && barr[2] == 8)) {
-            alert('黑子获胜');
+            setTimeout(() => {
+                alert('黑子获胜');
+            }, 0);
             this.dom.onclick = null;
+            return;
         }
         if (a || (
             warr[0] == 1
             && warr[1] == 2
             && warr[2] == 3
         )) {
-            alert('白子获胜');
+            setTimeout(() => {
+                alert('白子获胜');
+            }, 0);
             this.dom.onclick = null;
         }
     }
