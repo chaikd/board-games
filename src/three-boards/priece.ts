@@ -79,7 +79,7 @@ export class Priect {
     init() {
         this.context = this.dom.getContext('2d');
         const ctx = this.context;
-        this.context.clearRect(0, 0, this.boardWidth,this.boardWidth);
+        this.context.clearRect(0, 0, this.dom.offsetWidth, this.dom.offsetWidth);
         for (let i = 0; i < 3; i++) {
             this.drowPriect(this.startX + i * (this.boardWidth / 2), this.startY, "#000");
             this.drowPriect(this.startX + i * (this.boardWidth / 2), this.startY + this.boardWidth, "#fff");

@@ -76,6 +76,10 @@ module.exports = {
             {
                 test: /\.s?css/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.(jpg|png|gif|jpeg)$/,
+                use: ["url-loader"]
             }
             // babel-loader中使用@babel/preset-typescript转译ts
             // {

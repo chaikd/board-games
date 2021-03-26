@@ -13,6 +13,6 @@ function initPriect() {
 }
 initPriect();
 
-document.documentElement.querySelector('button')?.addEventListener('click', () => {
+document.documentElement.querySelector('.button')?.addEventListener('click', () => {
     initPriect();
 })

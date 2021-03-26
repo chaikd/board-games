@@ -3,11 +3,34 @@
     padding: 0;
     list-style: none;
 }
+body{
+    min-height: 100vh;
+    text-align: center;
+}
+a{
+    text-decoration: none;
+}
+.content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
 .board-box{
     margin: 0 auto;
 }
 .piect-box{
     position: absolute;
     top: 0;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.button{
+    display: inline-block;
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    color: #888;
+    border-radius: 4px;
+    margin-top: 20px;
+    cursor:pointer;
 }
