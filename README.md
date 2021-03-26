@@ -9,3 +9,8 @@
 	npm run start
 ### 打包
 	npm run build
+
+# Feature
+* 兽棋游戏
+* webSocket/mqtt在线对弈
+* ...
