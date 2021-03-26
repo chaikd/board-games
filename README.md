@@ -13,4 +13,5 @@
 # Feature
 * 兽棋游戏
 * webSocket/mqtt在线对弈
+* webpack公共文件抽取打包
 * ...
