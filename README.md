@@ -1,6 +1,6 @@
 # 棋类游戏
 本项目使用webpack构建，多页面的棋类游戏。
-旨在学习运用webpack以及canvase。
+旨在学习运用webpack以及canvas。
 # demo
 [games](http://www.games.chaikd.com)
 # 启动、打包项目
