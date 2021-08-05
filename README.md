@@ -11,7 +11,8 @@
 	npm run build
 
 # Feature
-* 兽棋游戏
+* 兽棋
+* 围鹿棋
 * webSocket/mqtt在线对弈
 * webpack公共文件抽取打包
-* ...
+* 重构游戏编码（是否单页应用？面向对象编码？视频在线对弈功能？移动端+pc端？）
